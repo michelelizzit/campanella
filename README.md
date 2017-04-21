@@ -14,13 +14,15 @@ Campanella - Open-source bell management system
 
 
 
-Campanella is a bell management system designed for schools. It can control the bells of a school through the internet.
-With user-friendly interface you can manage a system of RaspberryPi's.
-You have only to connect a loudspeaker or the classic school bell to the RaspberryPi and you are ready! 
-Using a single software for all the bells, the managing becomes very easy: all the school bells will ring at the same time and in a few seconds you will be able to change the timetable.
-The software is very versatile and can plan different timetables: daily, weekly, monthly or whatever.
-The software automatically syncronizes the internal clock with a remote atomic clock using the NetworkTimeProtocol.
-The software is designed for schools but is suitable for a lot more applications!
+Campanella is a bell management system designed for schools.  
+It is composed of a Raspberry PI (or any other Linux machine), and a loudspeaker or regular electric bell.  
+The system can be configured through a user-friendly web interface and represents a valid and accurate alternative to the expensive (and often inaccurate) timers that are often used for this purpose.  
+The system rings the bell and/or plays a sound on the loudspeaker according to the customizable internal schedule.  
+The software is very versatile and can plan different timetables: daily, weekly, monthly or custom.  
+The internal clock is automatically synchronized with a remote atomic clock via NTP once per day.  
+The system is designed for schools but is suitable for a lot more applications!  
+The system supports an optional HD44780 or serial LCD to display the time from the internal clock.  
+
 
 Campanella has been tested on the following hardware:  
 |--|
@@ -63,3 +65,10 @@ ENABLE_PIN | 3
 DATA_PIN | 23, 26, 22, 24
 
 _Note: Pins are numerated according to the PIN.BOARD numeration scheme_  
+
+## Screenshots
+
+![Screenshot1](/printables/screenshots/screenshot1.png)
+![Screenshot2](/printables/screenshots/screenshot2.png)
+![Screenshot3](/printables/screenshots/screenshot3.png)
+
