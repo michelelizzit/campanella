@@ -2,7 +2,7 @@
 
     README.md
  
-    Written by: Michele Lizzit <michele@lizzit.it>, 21 Apr 2017
+    Written by: Michele Lizzit <lizzit.it>, 21 Apr 2017
     Last update: 21 Apr 2017
     Version: 1.1
 
