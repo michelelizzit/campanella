@@ -1,0 +1,366 @@
+/*
+ *      style.css
+ *
+ *      This file if part of the "campanella" bell management system
+ *      For more information on the software please visit:
+ *      https://lizzit.it/campanella
+ *
+ *      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
+ *      Last update: 25 Apr 2016
+ *      Version: 1.2
+ *
+ *      Copyright (c) 2016 Michele Lizzit
+ *      
+ *      This program is free software: you can redistribute it and/or modify
+ *      it under the terms of the GNU Affero General Public License as published
+ *      by the Free Software Foundation, either version 3 of the License, or
+ *      (at your option) any later version.
+ *    
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU Affero General Public License for more details.
+ *    
+ *      You should have received a copy of the GNU Affero General Public License
+ *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@charset "utf-8";
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,112,0,0.86); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.93); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+}
+
+html {
+    overflow: auto;
+}
+
+
+body {
+	background-color: #FFFFFF;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	margin: 0px;
+	padding-top: 8px;
+	height: 100%;
+	overflow-y: auto;
+    	overflow-x: hidden;
+}
+html {
+    height: calc(100% - 8px);
+}
+
+#wrapper {
+	height: 100%;
+	width: 92%;
+	margin-left: 6%;
+}
+#sidebar {
+	height: auto;
+	top: 10px;
+	float: left;
+
+	text-transform: uppercase;
+	/*border-right: thin solid #999999;
+	border-bottom-width: thin;
+	border-bottom-color: #999999;
+	border-top-width: thin;
+	border-top-color: #999999;
+	border-left-width: thin;
+	border-left-color: #999999;*/
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-bottom-left-radius: 8px;
+	/*border-top-left-radius: 8px;*/
+	width: 20%;
+}
+#main {
+	float: left;
+	min-height: 100%;
+	position: relative;
+	padding-left: 30px;
+	padding-top: 10px;
+	padding-right: 30px;
+	width: 40%;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+#main2 {
+	float: left;
+	height: 100%;
+	position: relative;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+	width: 70%;
+	line-height: 20px;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+#header  {
+	height: 110px;
+	float: center;
+	width: 100%;
+	/*border-bottom-style: solid;
+	border-bottom-width: thin;*/
+	border: 1px solid #000000;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-color: #999999;
+	padding-left: 2px;
+	margin-top: 0px;
+}
+#wrapper #sidebar a {
+	line-height: 20%;
+	height: 100%;
+}
+.titolo   {
+	margin-top: 3px;
+	margin-bottom: -30px;
+	margin-right: -30px;
+	margin-left: 10px;
+}
+.header {
+	position: static;
+	left: auto;
+	right: auto;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-style: normal;
+	font-weight: 200;
+	font-size: xx-large;
+
+
+
+
+	margin-left: -70.32px
+%;
+	margin-left: 22%;
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: #FF9900;
+	list-style-type: none;
+}
+a:hover {
+	text-decoration: none;
+	color: #FF9900;
+	list-style-type: none;
+	font-style: oblique;
+}
+.thispage, .thispageSettings {
+	font-style: oblique;
+	font-size: large;
+	-webkit-box-shadow: 0px 0px;
+	box-shadow: 0px 0px;
+	margin-bottom: -38px;
+	font-weight: 700;
+	text-decoration: none;
+	text-indent: 24px;
+	opacity: 1;
+}
+a {
+	list-style-type: none;
+	color: #FF9900;
+}
+ul {
+	list-style-type: none;
+	line-height: 44px;
+}
+input {
+	background-color:#ffffff;
+	border:2px solid #FF9933;
+	font-size:16px;
+	color:#666;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px;
+	/*margin:5px 0px 10px 0px;*/
+	overflow: auto;
+	padding-left: 10px;
+	resize: none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+input:hover {
+	background-color: #FFFF99;
+}
+input:focus {
+	outline:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	box-shadow: 0 0 15px #FF9933;
+	-webkit-box-shadow: 0 0 15px #FF9933;
+	-moz-box-shadow: 0 0 15px #FF9933;
+}
+textarea {
+	background-color:#ffffff;
+	border:2px solid #FF9933;
+	font-size:16px;
+	color:#666;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px;
+	margin:5px 0px 10px 0px;
+	padding:10px;
+	height:200px;
+	width:165px;
+	overflow: inherit;
+	resize: none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+textarea:hover {
+	background-color: #FFFF99;
+}
+textarea:focus {
+	outline:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	box-shadow: 0 0 15px #FF9933;
+	-webkit-box-shadow: 0 0 15px #FF9933;
+	-moz-box-shadow: 0 0 15px #FF9933;
+
+}
+select {
+	background-color:#ffffff;
+	border:2px solid #33C6FF;
+	font-size:16px;
+	color:#666;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px;
+	margin:5px 0px 10px 0px;
+	padding:10px;
+	overflow: auto;
+	resize: none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+select:hover {
+	background-color: #33C6FF;
+}
+select:focus {
+	outline:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	box-shadow: 0 0 15px #33C6FF;
+	-webkit-box-shadow: 0 0 15px #33C6FF;
+	-moz-box-shadow: 0 0 15px #33C6FF;
+
+}
+fieldset {
+	background-color:#ffffff;
+	border:2px solid #FF9933;
+	font-size:16px;
+	color:#666;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px;
+	margin:5px 0px 10px 0px;
+	padding:10px;
+	overflow: auto;
+	resize: none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+fieldset:hover {
+	background-color: #FFFF99;
+}
+fieldset:focus {
+	outline:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	box-shadow: 0 0 15px #FF9933;
+	-webkit-box-shadow: 0 0 15px #FF9933;
+	-moz-box-shadow: 0 0 15px #FF9933;
+
+}
+#title {
+	font-weight: bolder;
+	font-size: large;
+	font-style: italic;
+	text-shadow: 0px 0px;
+}
+#container {
+	top: 10px;
+	width:100%;
+	height: 100%;
+}
+#main .reset {
+	position: relative;
+	left: 25%;
+}
+#main .invia {
+	position: relative;
+	left: 33%;
+}
+#help {
+	width: 500px;
+	color: #000000;
+	font-size: small;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-top-width: 0px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: #999999;
+	/*border-top-right-radius: 8px;*/
+	border-bottom-right-radius: 8px;
+	float: left;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+}
+.status_bar{
+	background: #FF9900;
+	height: 26px;
+	border-bottom: 5px solid #C17400;
+	width: 3px;
+	-webkit-transition:width .4s ease-out 0s;
+	-moz-transition:width .4s ease-out 0s;
+}
+.status_bar_container{
+	width: 100%;
+	height: 30px;
+	background: #FFFFFF;
+	border: 1px solid #D0D0D0;
+}
+.status_bar_box{
+	padding: 8px 2px;
+	color: #FFB03B;
+	margin-top: 16px;
+	background-color: #FFE5BE;
+	display: none;
+}
+#help .help-title {
+	font-size: x-large;
+	font-style: normal;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	letter-spacing: 2px;
+	border-collapse: collapse;
+	position: relative;
+	font-variant: small-caps;
+	font-weight: 500;
+	text-decoration: underline;
+	left: 53px;
+	top: 24px;
+}
+.help {
+	line-height: 14px;
+	padding-left: 4%;
+	padding-right: 3%;
+}
