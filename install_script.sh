@@ -92,7 +92,7 @@ echo ""
 if [[ ! ($REPLY =~ ^[Yy]$) ]]
 then
 #if no
-echo "Installation canceled"
+echo "Installation cancelled"
 exit 0;
 fi
 
