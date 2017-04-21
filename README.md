@@ -1,48 +1,54 @@
-# campanella
+# Campanella - Open-source bell management system
 
-
-    README
+    README.md
  
-    Written by: Michele Lizzit <michele@lizzit.it>, 25 Apr 2016
-    Last update: 25 Apr 2016
-    Version: 1.0
-
-    Copyright (c) 2016 Michele Lizzit
-     	
-    This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Affero General Public License as published
- 	by the Free Software Foundation, either version 3 of the License, or
- 	(at your option) any later version.
- 	
- 	This program is distributed in the hope that it will be useful,
- 	but WITHOUT ANY WARRANTY; without even the implied warranty of
- 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- 	GNU Affero General Public License for more details.
- 		
- 	You should have received a copy of the GNU Affero General Public License
- 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    Written by: Michele Lizzit <michele@lizzit.it>, 21 Apr 2017
+    Last update: 21 Apr 2017
+    Version: 1.1
 
 
-Sistema per la gestione delle campanelle
+Campanella - Open-source bell management system  
 
-Il sistema è in grado di controllare sia campanelle fisiche, se opportunamente collegate, sia riprodurre suono preimpostato tramite degli altoparlanti, è inoltre dotato di un'interfaccia web configurabile.
+Campanella is a bell management system designed for schools. It can control the bells of a school through the internet.
+With user-friendly interface you can manage a system of RaspberryPi's.
+You have only to connect a loudspeaker or the classic school bell to the RaspberryPi and you are ready! 
+Using a single software for all the bells, the managing becomes very easy: all the school bells will ring at the same time and in a few seconds you will be able to change the timetable.
+The software is very versatile and can plan different timetables: daily, weekly, monthly or whatever.
+The software automatically syncronizes the internal clock with a remote atomic clock using the NetworkTimeProtocol.
+The software is designed for schools but is suitable for a lot more applications!
 
-Per l'installazione è sufficiente eseguire il file install_script.sh da root, lo script è ancora nelle prime fasi di sviluppo ed è poco testato, è consigliabile fare un backup completo del sistema prima di eseguire lo script.
-Il software è stato testato su Raspberry PI model B
+Campanella has been tested on the following hardware:  
+|--|
+|Raspberry PI 1 model B|
+|Raspberry PI 3 model B|
 
-Potrebbe essere necessario, dopo l'installazione, disabilitare la console seriale usando il comando raspi-config
+Installation procedure (EXPERIMENTAL):  
+_Note: this procedure is HIGHLY EXPERIMENTAL and may irreversibly damage your system, please make sure you have a full backup of your system before proceeding_  
+_Note: this procedure has only been tested on Raspbian_  
 
-I pin sono configurabili modificando i relativi sorgenti python
-PIN.BOARD
+```bash
+sudo apt-get update
+sudo apt-get -y install git
+cd
+git clone https://github.com/michelelizzit/campanella/
+cd campanella
+sudo ./install_script.sh
+```
 
-Pin:
-GPIO_CAMPANELLA_PIN = 7
-GPIO_LED_RED_PIN = 13
-GPIO_LED_GREEN_PIN = 16
-GPIO_LED_BLUE_PIN = 18
-GPIO_BUTTON_PIN = 15
-LCD:
-RS_PIN = 19
-RW_PIN = 21
-ENABLE_PIN = 3
-DATA_PIN = 23, 26, 22, 24
+Pins:  
+_Note: Pins are numerated according to the PIN.BOARD numeration scheme_  
+Name | Pin
+--|--
+GPIO_CAMPANELLA_PIN | 7
+GPIO_LED_RED_PIN | 13
+GPIO_LED_GREEN_PIN | 16
+GPIO_LED_BLUE_PIN | 18
+GPIO_BUTTON_PIN | 15
+
+Optional HD44780 LCD:
+LCD Pin| RaspberryPI Pin
+--|--
+RS_PIN | 19
+RW_PIN | 21
+ENABLE_PIN | 3
+DATA_PIN | 23, 26, 22, 24
