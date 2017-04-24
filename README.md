@@ -1,4 +1,4 @@
-# Campanella - Open-source bell management system
+# [Campanella](https://lizzit.it/campanella) - Open-source bell management system
 
     README.md
  
@@ -7,7 +7,8 @@
     Version: 1.1
 
 
-Campanella - Open-source bell management system 
+Campanella - Open-source bell management system  
+More informations are avaiable at the project website: https://lizzit.it/campanella
 
 
 <img src="https://github.com/michelelizzit/campanella/raw/master/printables/campanella_logo.png" width="300px" style="float: right;">
