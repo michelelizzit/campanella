@@ -8,7 +8,7 @@
 
 
 Campanella - Open-source bell management system  
-More informations are avaiable at the project website: https://lizzit.it/campanella
+More informations are available on the project website: https://lizzit.it/campanella
 
 
 <img src="https://github.com/michelelizzit/campanella/raw/master/printables/campanella_logo.png" width="300px" style="float: right;">
