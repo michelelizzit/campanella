@@ -9,7 +9,7 @@
  #		https://lizzit.it/campanella
  #
  #      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- #      Last update: 25 Apr 2016
+ #      Last update: 22 Sept 2017
  #      Version: 1.2
  #
  #      Copyright (c) 2016 Michele Lizzit
@@ -86,7 +86,7 @@ while (1) :
 			prev_demone = 1
 			
 			print time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: CAMPANELLA DAEMON CRASHED, setting led color to red"
-			command = "logger" + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: CAMPANELLA DAEMON CRASHED, setting led color to red";
+			command = "logger " + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: CAMPANELLA DAEMON CRASHED, setting led color to red";
 			os.system(command)
 		set_led_color("red")
 	else :
@@ -95,7 +95,7 @@ while (1) :
 		if (prev_power_daemon == 0) :
 			prev_power_daemon = 1
 			print time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: POWER DAEMON CRASHED, setting led color to red"
-			command = "logger" + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: POWER DAEMON CRASHED, setting led color to red"
+			command = "logger " + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: POWER DAEMON CRASHED, setting led color to red"
 			os.system(command)
 		set_led_color("red")
 	else :
@@ -105,7 +105,7 @@ while (1) :
 		if (prev_serial_daemon == 0) :
 			prev_serial_daemon = 1
 			print time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: SERIAL DAEMON CRASHED, setting led color to red"
-			command = "logger" + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: SERIAL DAEMON CRASHED, setting led color to red";
+			command = "logger " + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: SERIAL DAEMON CRASHED, setting led color to red";
 			os.system(command)
 		set_led_color("red")
 	else :
@@ -115,7 +115,7 @@ while (1) :
 		if (prev_lcd_daemon == 0) :
 			prev_lcd_daemon = 1
 			print time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: LCD DAEMON CRASHED, setting led color to red"
-			command = "logger" + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: LCD DAEMON CRASHED, setting led color to red";
+			command = "logger " + time.strftime("[%H:%M:%S %d/%m/%Y") + "] Watchdog: LCD DAEMON CRASHED, setting led color to red";
 			os.system(command)
 		set_led_color("red")
 	else :

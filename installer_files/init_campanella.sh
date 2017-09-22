@@ -2,6 +2,16 @@
 # /etc/init.d/campanella
 #
 
+### BEGIN INIT INFO
+# Provides:          campanella
+# Required-Start:    $all
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start campanella at boot time
+# Description:       Campanella init script
+### END INIT INFO
+
 ###
  #      init_campanella.sh
  #
