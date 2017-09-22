@@ -129,6 +129,13 @@ green_color;
 
 sleep 1;
 
+echo "Disabling shell for user campanella..."
+default_color;
+usermod -s /bin/false campanella
+green_color;
+
+sleep 1;
+
 echo "Adding user campanella to group dialout..."
 default_color;
 usermod -a -G dialout campanella
