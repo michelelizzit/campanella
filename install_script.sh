@@ -233,10 +233,11 @@ green_color;
 echo "Setting permissions..."
 default_color;
 chown -R campanella:campanella /opt/campanella
-chmod 755 -R /opt/campanella
+chmod 555 -R /opt/campanella
 chmod 777 -R /opt/campanella/data/
 chown -R www-data:www-data /var/www
-chmod 755 -R /var/www
+chmod 555 -R /var/www
+chmod 755 /var/www/uploads
 chmod 775 /opt/campanella/OPTIONS.txt
 
 sleep 1;
