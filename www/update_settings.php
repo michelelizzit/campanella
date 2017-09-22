@@ -7,7 +7,7 @@
  *      https://lizzit.it/campanella
  *
  *      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- *      Last update: 25 Apr 2016
+ *      Last update: 22 Sept 2017
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit

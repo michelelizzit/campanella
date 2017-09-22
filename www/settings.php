@@ -7,7 +7,7 @@
  *      https://lizzit.it/campanella
  *
  *      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- *      Last update: 25 Apr 2016
+ *      Last update: 22 Sept 2017
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit
@@ -28,10 +28,12 @@
 ?>
 
 <?php
+require('definitions.php');
+
 $error = 0;
 $url = "/update_settings.php";
 $xx = 0;
-$handle = fopen("/opt/campanella/OPTIONS.txt", "r");
+$handle = fopen($OPTIONS_FILE_PATH, "r");
 while (($line = fgets($handle)) !== false) {
         if (substr( $line, 0, 1 ) !== "#") {
         	$options[$xx] = $line;
@@ -76,12 +78,11 @@ if (isset($_POST['enable']) && isset($_POST['orari']) && isset($_POST['ntp_updat
 9
 " . $_POST['orari'];
 	
-    file_put_contents("/opt/campanella/OPTIONS.txt", $options_string);
+    file_put_contents($OPTIONS_FILE_PATH, $options_string);
 
     header(sprintf('Location: %s', $url));
     printf('<a href="%s">Moved</a>.', htmlspecialchars($url));
-    //exec('/usr/bin/sudo /opt/campanella/reboot_daemon.sh', $prova);
-    exec('/usr/bin/sudo /opt/campanella/reboot_daemon.sh > /dev/null', $prova);
+    exec("/usr/bin/sudo $RESTART_CAMPANELLA_SCRIPT_PATH > /dev/null", $prova);
     echo "<pre>Done</pre>";
     exit();
 }

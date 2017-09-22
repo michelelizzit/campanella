@@ -9,7 +9,7 @@
  #		https://lizzit.it/campanella
  #
  #      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- #      Last update: 25 Apr 2016
+ #      Last update: 22 Sept 2017
  #      Version: 1.2
  #
  #      Copyright (c) 2016 Michele Lizzit
@@ -28,10 +28,34 @@
  #		along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-sudo killall demone.py
-sudo killall serial_daemon.py
-sudo killall lcd_daemon.py
-sudo /opt/campanella/demone.py &
-sudo /opt/campanella/serial_daemon.py &
-sudo /opt/campanella/lcd_daemon.py &
+green_color () {
+	echo -e "\e[1;31m";
+}
+default_color () {
+	echo -e "\e[1;0m";
+}
+
+green_color;
+echo "Checking for root permissions..."
+default_color;
+
+sleep 1;
+
+if [[ $EUID -ne 0 ]]; then
+		green_color;
+		echo "This script must be run as root";
+	default_color;
+		exit 1;
+else
+	green_color;
+	echo "Root OK";
+	default_color;
+fi
+
+killall demone.py
+killall serial_daemon.py
+killall lcd_daemon.py
+/opt/campanella/demone.py &
+/opt/campanella/serial_daemon.py &
+/opt/campanella/lcd_daemon.py &
 exit

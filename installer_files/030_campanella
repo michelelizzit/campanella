@@ -1,0 +1,1 @@
+www-data ALL=(root) NOPASSWD: /sbin/poweroff,/sbin/reboot,/opt/campanella/restart_script.sh

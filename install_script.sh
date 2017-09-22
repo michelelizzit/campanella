@@ -136,16 +136,27 @@ green_color;
 
 sleep 1;
 
+echo "Adding user www-data to group campanella..."
+default_color;
+usermod -a -G campanella www-data
+green_color;
+
+sleep 1;
+
 echo "Allowing user campanella limited root access..."
 default_color;
-echo "campanella ALL=(root) NOPASSWD: /sbin/poweroff,/sbin/reboot" >> /etc/sudoers
+cp installer_files/020_campanella /etc/sudoers.d/020_campanella
+chmod 440 /etc/sudoers.d/020_campanella
+chown root:root /etc/sudoers.d/020_campanella
 green_color;
 
 sleep 1;
 
 echo "Allowing user www-data limited root access..."
 default_color;
-echo "www-data ALL=(root) NOPASSWD: /sbin/poweroff,/sbin/reboot" >> /etc/sudoers
+cp installer_files/030_campanella /etc/sudoers.d/030_campanella
+chmod 440 /etc/sudoers.d/030_campanella
+chown root:root /etc/sudoers.d/030_campanella
 green_color;
 
 sleep 1;
@@ -185,47 +196,48 @@ sudo apt-get -y install apache2 php5
 green_color;
 echo "Enabling apache rewrite mod..."
 default_color;
-sudo a2enmod rewrite
+a2enmod rewrite
 
 sleep 1;
 
 green_color;
 echo "Enabling ssl..."
 default_color;
-sudo a2enmod ssl
+a2enmod ssl
 
 sleep 1;
 
 green_color;
 echo "Configuring apache server..."
 default_color;
-sudo cp installer_files/apache_campanella.conf /etc/apache2/sites-available/
-sudo rm /etc/apache2/sites-enabled/*
-sudo ln -s /etc/apache2/sites-available/apache_campanella.conf /etc/apache2/sites-enabled/
+cp installer_files/apache_campanella.conf /etc/apache2/sites-available/
+rm /etc/apache2/sites-enabled/*
+ln -s /etc/apache2/sites-available/apache_campanella.conf /etc/apache2/sites-enabled/
 
 sleep 1;
 
 green_color;
 echo "Restarting apache server..."
 default_color;
-sudo service apache2 restart
+service apache2 restart
 green_color;
 echo "Installing..."
 default_color;
-sudo cp -r ./campanella/* /opt/campanella/
-sudo cp -r ./www/* /var/www/
-sudo mkdir /var/www/uploads
+cp -r ./campanella/* /opt/campanella/
+cp -r ./www/* /var/www/
+mkdir /var/www/uploads
 
 sleep 1;
 
 green_color;
 echo "Setting permissions..."
 default_color;
-sudo chown -R campanella:campanella /opt/campanella
-sudo chmod 755 -R /opt/campanella
-sudo chmod 777 -R /opt/campanella/data/
-sudo chown -R www-data:www-data /var/www
-sudo chmod 755 -R /var/www
+chown -R campanella:campanella /opt/campanella
+chmod 755 -R /opt/campanella
+chmod 777 -R /opt/campanella/data/
+chown -R www-data:www-data /var/www
+chmod 755 -R /var/www
+chmod 775 /opt/campanella/OPTIONS.txt
 
 sleep 1;
 
@@ -233,16 +245,16 @@ green_color;
 echo "Installing init script..."
 default_color;
 cp installer_files/init_campanella.sh /etc/init.d/campanella
-sudo chmod 755 /etc/init.d/campanella
-sudo chown root:root /etc/init.d/campanella
-sudo update-rc.d campanella defaults
+chmod 755 /etc/init.d/campanella
+chown root:root /etc/init.d/campanella
+update-rc.d campanella defaults
 
 sleep 1;
 
 green_color;
 echo "Starting campanella..."
 default_color;
-sudo service campanella start
+service campanella start
 
 sleep 1;
 

@@ -28,9 +28,13 @@
 ?>
 
 <?php
+
+require('definitions.php');
+
+
 if (isset($_POST['elimina_dati_button'])) {     
 echo "<pre>Ho eliminato il file selezionato</pre>";
-	$file_eliminare = "/var/www/uploads/" . $_POST['elimina_dati'];
+	$file_eliminare = $SOUNDFILE_UPLOAD_DIR . $_POST['elimina_dati'];
 	unlink($file_eliminare);
 		
 }
@@ -38,12 +42,12 @@ echo "<pre>Ho eliminato il file selezionato</pre>";
 
 if (isset($_POST['elimina_tutto_button'])) {    
 echo "<pre>Ho eliminato tutti i file precedentemente caricati</pre>";
-if ($handle = opendir('/var/www/uploads/')) {
+if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 
 		while (false !== ($entry = readdir($handle))) {
 			if ($entry !== ".") {
 						if ($entry !== "..") {
-								$file_eliminare = "/var/www/uploads/" . $entry;
+								$file_eliminare = $SOUNDFILE_UPLOAD_DIR . $entry;
 							unlink($file_eliminare);
 						
 						}
@@ -56,9 +60,9 @@ if ($handle = opendir('/var/www/uploads/')) {
 if (isset($_POST['selected_sound'])) { 
 		if (substr($_POST['selected_sound'], -4) == ".wav") {
 			echo "<pre>Impostato suono</pre>";
-		$data_file = '/var/www/uploads/' . $_POST['selected_sound'];
-		unlink("/opt/campanella/data/suono.wav");
-		copy($data_file,"/opt/campanella/data/suono.wav");
+		$data_file = $SOUNDFILE_UPLOAD_DIR . $_POST['selected_sound'];
+		unlink($ACTIVE_SOUNDFILE_PATH);
+		copy($data_file, $ACTIVE_SOUNDFILE_PATH);
 		}
 		else {
 			echo "<pre>File non valido</pre>";
@@ -101,7 +105,7 @@ if (isset($_POST['selected_sound'])) {
 			<select name="elimina_dati" >
 				<?php
 
-				if ($handle = opendir('/var/www/uploads')) {
+				if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 
 					while (false !== ($entry = readdir($handle))) {
 						if ($entry !== ".") {
@@ -131,7 +135,7 @@ if (isset($_POST['selected_sound'])) {
 					<legend>Imposta il suono</legend>
 					<select name="selected_sound" >
 						<?php
-						if ($handle = opendir('/var/www/uploads')) {
+						if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 							while (false !== ($entry = readdir($handle))) {
 								if ($entry !== ".") {
 									if ($entry !== "..") {

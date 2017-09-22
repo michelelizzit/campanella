@@ -29,7 +29,8 @@
 
 <?php
 
-$UPLOAD_DIR = './uploads/';
+require('definitions.php');
+
 
 if(isset($_POST['action']) and $_POST['action'] == "upload")
 {
@@ -39,7 +40,7 @@ if(isset($_POST['action']) and $_POST['action'] == "upload")
         echo "<pre>Uploading... \n Errors" . $file['error'] . "</pre>";
         if($file['error'] == UPLOAD_ERR_OK and is_uploaded_file($file['tmp_name']))
         {
-            move_uploaded_file($file['tmp_name'], $UPLOAD_DIR.$file['name']);
+            move_uploaded_file($file['tmp_name'], $SOUNDFILE_UPLOAD_DIR . $file['name']);
             echo "<pre>Uploaded</pre>";
         }
         else if($file['error'] == UPLOAD_ERR_INI_SIZE)

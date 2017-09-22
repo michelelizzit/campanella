@@ -1,0 +1,2 @@
+campanella ALL=(root) NOPASSWD: /sbin/poweroff,/sbin/reboot
+
