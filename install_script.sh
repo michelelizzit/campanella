@@ -180,6 +180,7 @@ sudo apt-get -y install python-pip python-dev
 sudo pip install distribute
 sudo pip install RPi.GPIO
 sudo pip install RPLCD
+sudo pip install pyserial
 sudo apt-get -y install apache2 php5
 green_color;
 echo "Enabling apache rewrite mod..."
@@ -213,6 +214,7 @@ echo "Installing..."
 default_color;
 sudo cp -r ./campanella/* /opt/campanella/
 sudo cp -r ./www/* /var/www/
+sudo mkdir /var/www/uploads
 
 sleep 1;
 
