@@ -11,17 +11,17 @@
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit
- *      
+ *
  *      This program is free software: you can redistribute it and/or modify
  *      it under the terms of the GNU Affero General Public License as published
  *      by the Free Software Foundation, either version 3 of the License, or
  *      (at your option) any later version.
- *    
+ *
  *      This program is distributed in the hope that it will be useful,
  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *      GNU Affero General Public License for more details.
- *    
+ *
  *      You should have received a copy of the GNU Affero General Public License
  *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -42,20 +42,21 @@ header('Pragma: no-cache');
 <body>
 	<div id="wrapper">
 
-		<?php echo file_get_contents('header_div.html'); ?>	
+		<?php echo file_get_contents('header_div.html'); ?>
 
-		<div id="sidebar"> 
+		<div id="sidebar">
 			<ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="settings.php">Settings</a></li>
-			<li><a href="status.php">Status</a></li>
-			<li><a href="credits.php">Credits / Info</a></li>
+			<li><a href="index.php" class="sidebarHome"></a></li>
+			<li><a href="settings.php" class="sidebarSettings"></a></li>
+			<li><a href="status.php" class="sidebarStatus"></a></li>
+			<li><a href="credits.php" class="sidebarCredits"></a></li>
+			<?php echo file_get_contents('language_selector.html'); ?>
 		</div>
 
-		<div id="main" style="width:70%"> 
-			<p> <span id="title">404 Not Found: </span>
+		<div id="main" style="width:70%">
+			<p> <span id="title" class="title404"></span>
 				<br><br>
-				<h2>Il file non e' presente in questo server</h2>
+				<h2 class="text404"></h2>
 			</p>
 			<br>
 			<br>

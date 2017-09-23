@@ -11,17 +11,17 @@
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit
- *      
+ *
  *      This program is free software: you can redistribute it and/or modify
  *      it under the terms of the GNU Affero General Public License as published
  *      by the Free Software Foundation, either version 3 of the License, or
  *      (at your option) any later version.
- *    
+ *
  *      This program is distributed in the hope that it will be useful,
  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *      GNU Affero General Public License for more details.
- *    
+ *
  *      You should have received a copy of the GNU Affero General Public License
  *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -46,31 +46,32 @@ if (isset($_POST['shutdown'])) {
 <!doctype html>
 <html>
 <head>
-	<?php echo file_get_contents('head.html'); ?>	
+	<?php echo file_get_contents('head.html'); ?>
 </head>
 
 <body>
 	<div id="wrapper">
 
-		<?php echo file_get_contents('header_div.html'); ?>		
+		<?php echo file_get_contents('header_div.html'); ?>
 
-		<div id="sidebar"> 
+		<div id="sidebar">
 			<ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="settings.php">Settings</a></li>
-			<li class="thispage"><a class="thispage" href="status.php">Status</a></li>
+			<li><a href="index.php" class="sidebarHome"></a></li>
+			<li><a href="settings.php" class="sidebarSettings"></a></li>
+			<li class="thispage"><a href="status.php" class="thispage sidebarStatus"></a></li>
 			<br>
-			<li><a href="credits.php">Credits / Info</a></li>
+			<li><a href="credits.php" class="sidebarCredits"></a></li>
+			<?php echo file_get_contents('language_selector.html'); ?>
 		</div>
 
-		<div id="main" style="width: 75%;"> <p> <span id="title">Stato del sistema: </span>
+		<div id="main" style="width: 75%;"> <p> <span id="title" class="statusTitle"></span>
 			<br><br>
-			Indicazioni sullo stato del server
-			
+			<span class="statusServer"></span>
+
     			</br>
-    			
-    			
-    			
+
+
+
 			<?php
 			exec("/etc/init.d/ssh status", $output_ssh);
 			$output2_ssh = str_replace("Array\n(\n    [0] => ", "", print_r($output_ssh, true));
@@ -115,72 +116,72 @@ if (isset($_POST['shutdown'])) {
 			}
 			?>
 			</br>
-			<a href="/usb.php">Check USB ports</a>
+			<a href="/usb.php" class="statusUSB"></a>
   			</br>
   			</br>
   			</br>
-  			<form method="post" onsubmit="return confirm('Sei sicuro di riavviare/spegnere il sistema?')">
+  			<form method="post" onsubmit="return confirm(lang.rebootConfirm)">
   				<input name="reboot" type="submit" value="Reboot">
   				<input name="shutdown" type="submit" value="Shutdown">
   			</form>
   			</br>
   			</br>
   			<center>
-    			Spazio usato nella SD:
+    			<span class="statusSDspace"></span>
     			</center>
     			<div class="status_bar_container" style="width: 95%; margin-left: auto; margin-right: auto;">
         		<div class="status_bar" style="width: <?php
-        		
+
         		$free_space = disk_free_space("/");
         		$total_space = disk_total_space("/");
         		echo (($total_space - $free_space)/$total_space)*100;
-        		
+
         		?>%;">&nbsp;</div>
       			</div>
     			<center>
-			Memoria SD:
+			<span class="statusSD"></span>
     				</br>
     				<?php
-        		
+
         		$free_space = (disk_free_space("/"));
 			$total_space = (disk_total_space("/"));
         		echo "Libero: " . number_format((($free_space)/$total_space)*100) . "% = " . number_format($free_space/(1024*1024)) . "GB" . "</br>";
         		echo "Usato: " . number_format((($total_space - $free_space)/$total_space)*100) . "% = " . number_format(($total_space-$free_space)/(1024*1024)) . "GB" . "</br>";
         		echo "Totale: " . number_format($total_space/(1024*1024)) . "GB" . "</br>";
-        		
+
         		?>
-    			
+
     			</br>
-    			RAM:
+    			<span class="statusRAM"></span>
     			</center>
     			<div class="status_bar_container" style="width: 95%; margin-left: auto; margin-right: auto;">
         		<div class="status_bar" style="width: <?php
-        		
+
         		exec("cat /proc/meminfo", $output_mem);
 			$output3_mem = str_replace("MemTotal:", "", trim($output_mem[0]));
 			$output3_mem = str_replace("kB", "", $output3_mem);
-			
+
 			$output4_mem = str_replace("MemFree:", "", trim($output_mem[1]));
 			$output4_mem = str_replace("kB", "", $output4_mem);
-			
+
       			$total_space = (int)trim($output3_mem);
       			$free_space = (int)trim($output4_mem);
-      			
-      			
-      			
+
+
+
         		echo (($total_space - $free_space)/$total_space)*100;
-        		
+
         		?>%;">&nbsp;</div>
       			</div>
     			<center>
-			RAM:
+			<span class="statusRAM"></span>
     				</br>
     				<?php
         		echo "Libero: " . number_format((($free_space)/$total_space)*100) . "% = " . number_format($free_space/(1024)) . "MB" . "</br>";
         		echo "Usato: " . number_format((($total_space - $free_space)/$total_space)*100) . "% = " . number_format(($total_space-$free_space)/(1024)) . "MB" . "</br>";
         		echo "Totale: " . number_format($total_space/(1024)) . "MB" . "</br>";
         		?>
-    			
+
     			</br>
     			<?php
 			//exec("cat /proc/meminfo", $output_mem);
@@ -192,7 +193,7 @@ if (isset($_POST['shutdown'])) {
 			?>
   			</br>
   			</center>
-  			Contenuto del file OPTIONS.txt
+  			<span class="statusOptions"></span>
   			</br>
     			<?php
 			$options = file_get_contents("/opt/campanella/OPTIONS.txt");
@@ -202,7 +203,7 @@ if (isset($_POST['shutdown'])) {
 			?>
   			</br>
   			</br><center>
-  			Errori del server:
+  			<span class="statusErrors"></span>
   			</br>
     			<?php
 			$options = file_get_contents("/opt/campanella/ERROR.txt");
@@ -217,7 +218,7 @@ if (isset($_POST['shutdown'])) {
 			?>
   			</br>
   			</br>
-  			Stato della rete
+  			<span class="statusNetwork"></span>
   			</br></center>
     			<?php
 			exec("/sbin/ifconfig", $output_lan);

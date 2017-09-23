@@ -11,17 +11,17 @@
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit
- *      
+ *
  *      This program is free software: you can redistribute it and/or modify
  *      it under the terms of the GNU Affero General Public License as published
  *      by the Free Software Foundation, either version 3 of the License, or
  *      (at your option) any later version.
- *    
+ *
  *      This program is distributed in the hope that it will be useful,
  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *      GNU Affero General Public License for more details.
- *    
+ *
  *      You should have received a copy of the GNU Affero General Public License
  *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -65,27 +65,29 @@ if(isset($_POST['action']) and $_POST['action'] == "upload")
 
 	<?php echo file_get_contents('header_div.html'); ?>
 
-		<div id="sidebar"> 
-			<ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="settings.php">Settings</a></li>
-			<li><a href="status.php">Status</a></li>
-			<li><a href="credits.php">Credits / Info</a></li>
-		</div>
+	<div id="sidebar">
+		<ul>
+		<li><a href="index.php" class="sidebarHome"></a></li>
+		<li><a href="settings.php" class="sidebarSettings"></a></li>
+		<li><a href="status.php" class="sidebarStatus"></a></li>
+		<li><a href="credits.php" class="sidebarCredits"></a></li>
+		<?php echo file_get_contents('language_selector.html'); ?>
+	</div>
 
 		<div id="main">
-			<span id="title">Carica un nuovo suono sul server: </span>
+			<span id="title" class="uploadTitle"></span>
 			<br>
-			NOTA: sono accettati solo file .wav
+			<span class="uploadInfo">
+			</span>
 			</br>
 			<br>
         <form method="post" action="upload.php" enctype="multipart/form-data">
             <input type="hidden" name="action" value="upload" />
-            <label>Carica il tuo file:</label>
+            <label class="uploadLabel"></label>
             <input type="file" name="user_file" />
             <br />
-            <input type="submit" value="Upload" />
-	    <input type="submit" formaction="scegli_suono.php" value="Indietro">
+            <input type="submit" value="" class="uploadText"/>
+	    <input type="submit" formaction="scegli_suono.php" class="textBack">
         </form>
        	</div>
     </body>

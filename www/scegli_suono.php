@@ -11,17 +11,17 @@
  *      Version: 1.2
  *
  *      Copyright (c) 2016 Michele Lizzit
- *      
+ *
  *      This program is free software: you can redistribute it and/or modify
  *      it under the terms of the GNU Affero General Public License as published
  *      by the Free Software Foundation, either version 3 of the License, or
  *      (at your option) any later version.
- *    
+ *
  *      This program is distributed in the hope that it will be useful,
  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *      GNU Affero General Public License for more details.
- *    
+ *
  *      You should have received a copy of the GNU Affero General Public License
  *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -32,15 +32,15 @@
 require('definitions.php');
 
 
-if (isset($_POST['elimina_dati_button'])) {     
+if (isset($_POST['elimina_dati_button'])) {
 echo "<pre>Ho eliminato il file selezionato</pre>";
 	$file_eliminare = $SOUNDFILE_UPLOAD_DIR . $_POST['elimina_dati'];
 	unlink($file_eliminare);
-		
+
 }
 
 
-if (isset($_POST['elimina_tutto_button'])) {    
+if (isset($_POST['elimina_tutto_button'])) {
 echo "<pre>Ho eliminato tutti i file precedentemente caricati</pre>";
 if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 
@@ -49,15 +49,15 @@ if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 						if ($entry !== "..") {
 								$file_eliminare = $SOUNDFILE_UPLOAD_DIR . $entry;
 							unlink($file_eliminare);
-						
+
 						}
 					}
 			}
 	closedir($handle);
-}				
+}
 }
 
-if (isset($_POST['selected_sound'])) { 
+if (isset($_POST['selected_sound'])) {
 		if (substr($_POST['selected_sound'], -4) == ".wav") {
 			echo "<pre>Impostato suono</pre>";
 		$data_file = $SOUNDFILE_UPLOAD_DIR . $_POST['selected_sound'];
@@ -78,30 +78,32 @@ if (isset($_POST['selected_sound'])) {
 	<meta charset="utf-8">
 	<style type="text/css"></style>
 	<link href="style.css" rel="stylesheet" type="text/css">
-	<?php echo file_get_contents('head.html'); ?>	
+	<?php echo file_get_contents('head.html'); ?>
 </head>
 <body>
 	<div id="wrapper">
-		<?php echo file_get_contents('header_div.html'); ?>		
+		<?php echo file_get_contents('header_div.html'); ?>
 
-		<div id="sidebar"> 
+		<div id="sidebar">
 			<ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="settings.php">Settings</a></li>
-			<li><a href="status.php">Status</a></li>
-			<li><a href="credits.php">Credits / Info</a></li>
+			<li><a href="index.php" class="sidebarHome"></a></li>
+			<li><a href="settings.php" class="sidebarSettings"></a></li>
+			<li><a href="status.php" class="sidebarStatus"></a></li>
+			<li><a href="credits.php" class="sidebarCredits"></a></li>
+			<?php echo file_get_contents('language_selector.html'); ?>
 		</div>
 
 		<div id="main">
 			<br>
-			<span id="title">Pannello di gestione dei suoni</span>
+			<span id="title" class="selectSoundTitle"></span>
 			<br>
-			Qui puoi impostare il suono riprodotto dalle casse.
+			<span class="selectSoundInfo">
+			</span>
 			</br>
 			<br>
 			<form action="" method="post">
 			<fieldset style="width: 100px;">
-			<legend>Elimina un suono in memoria</legend>
+			<legend class="selectSoundDelete"></legend>
 			<select name="elimina_dati" >
 				<?php
 
@@ -123,16 +125,16 @@ if (isset($_POST['selected_sound'])) {
 			</select>
 		</fieldset>
 
-		<INPUT TYPE = "Submit" Name = "elimina_dati_button" VALUE = "Elimina suono selezionato">
-			<form action="" method="post"> 
-				<input type="Submit" name="elimina_tutto_button" value="Elimina tutti i suoni">
+		<INPUT TYPE = "Submit" Name = "elimina_dati_button" class="selectSoundDeleteButton" value="">
+			<form action="" method="post">
+				<input type="Submit" name="elimina_tutto_button" class="selectSoundDeleteAllButton" value="">
 			</form>
 		</form>
-		<br>		
+		<br>
 		<div style="float: left; width: 190px;">
 			<form action="" method="post">
 				<fieldset style="width: 100px;">
-					<legend>Imposta il suono</legend>
+					<legend class="selectSoundSetInfo"></legend>
 					<select name="selected_sound" >
 						<?php
 						if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
@@ -140,7 +142,7 @@ if (isset($_POST['selected_sound'])) {
 								if ($entry !== ".") {
 									if ($entry !== "..") {
 										echo '<option value="' . $entry . '">' . $entry . '</option>';
-										
+
 									}
 								}
 							}
@@ -150,18 +152,18 @@ if (isset($_POST['selected_sound'])) {
 					</select>
 				</fieldset>
 
-				<input type="submit" value="Imposta il suono"/>
+				<input type="submit" class="selectSoundSetButton" value=""/>
 			</form>
 			<br>
 			<div>
 				<form action="upload.php">
-					<input type="submit" value="Carica un nuovo suono sul server" />
+					<input type="submit" value="" class="selectSoundUpload"/>
 
 				</form>
 				<form action="settings.php">
-					<input type="submit" value="Indietro"/>
+					<input type="submit" class="textBack"/>
 				</form>
-			</div>	
+			</div>
 		</div>
 	</div>
 </body>
