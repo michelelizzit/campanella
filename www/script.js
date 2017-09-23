@@ -1,3 +1,30 @@
+/*
+ *      script.js
+ *
+ *      This file if part of the "campanella" bell management system
+ *      For more information on the software please visit:
+ *      https://lizzit.it/campanella
+ *
+ *      Written by: Michele Lizzit <michele@lizzit.it>, 23 Sept 2017
+ *      Last update: 24 Sept 2017
+ *      Version: 1.2
+ *
+ *      Copyright (c) 2016 Michele Lizzit
+ *
+ *      This program is free software: you can redistribute it and/or modify
+ *      it under the terms of the GNU Affero General Public License as published
+ *      by the Free Software Foundation, either version 3 of the License, or
+ *      (at your option) any later version.
+ *
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU Affero General Public License for more details.
+ *
+ *      You should have received a copy of the GNU Affero General Public License
+ *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 function setCookieLang(cookieValue) {
 	var expireTime = new Date();
 	var cookieName = "lang";
@@ -39,6 +66,11 @@ function getLanguage(langName) {
 			langFile = "/lang/it.js";
 			if (typeof langIT == "undefined") break;
 			langStrings = langIT;
+			break;
+		case "dutch":
+			langFile = "/lang/nl.js";
+			if (typeof langNL == "undefined") break;
+			langStrings = langNL;
 			break;
 		default:
 			return null;
@@ -108,10 +140,11 @@ function applyLanguage() {
 	$(".selectSoundDeleteAllButton").val(lang.selectSoundDeleteAllButton);
 	$(".selectSoundUpload").val(lang.selectSoundUpload);
 	$(".selectSoundDeleteButton").val(lang.selectSoundDeleteButton);
-	$(".selectSoundTitle").val(lang.selectSoundTitle);
-	$(".selectSoundInfo").val(lang.selectSoundInfo);
-	$(".selectSoundDelete").val(lang.selectSoundDelete);
-	$(".selectSoundSetInfo").val(lang.selectSoundSetInfo);
+	$(".selectSoundTitle").html(lang.selectSoundTitle);
+	$(".selectSoundInfo").html(lang.selectSoundInfo);
+	$(".selectSoundDelete").html(lang.selectSoundDelete);
+	$(".selectSoundSetInfo").html(lang.selectSoundSetInfo);
+	$(".selectSoundSetButton").val(lang.selectSoundSetButton);
 }
 $(document).ready(function() {
 	selectedLanguage = getCookieLang();
