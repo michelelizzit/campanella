@@ -39,7 +39,7 @@ green_color;
 echo "Checking for root permissions..."
 default_color;
 
-sleep 1;
+#sleep 1;
 
 if [[ $EUID -ne 0 ]]; then
 		green_color;

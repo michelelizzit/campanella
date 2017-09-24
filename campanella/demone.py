@@ -46,8 +46,8 @@ def campanella_suona(sound_type) : #ring bell
 	set_led_color("blue") #sets led color
 	GPIO.output(GPIO_CAMPANELLA_PIN, True) #enable the output pin
 	temp_volume = str(volume) + "dB"
-	os.system("sudo amixer -q -- sset PCM playback 4dB")
-	os.system("sudo aplay -q -D sysdefault /opt/campanella/data/suono.wav")
+	os.system("amixer -q -- sset PCM playback " + temp_volume)
+	os.system("aplay -q -D sysdefault /opt/campanella/data/suono.wav")
 	time.sleep(track_duration)
 	set_led_color("green")
 	GPIO.output(GPIO_CAMPANELLA_PIN, False)
@@ -195,10 +195,14 @@ while (tmp + num_options < len(options)) :
 	orari.append(options[tmp + num_options])
 	tmp += 1
 
+#remove trailing newline characters
+orari = [e.rstrip() for e in orari]
+
+
 print ""
 print "Programma python scritto da Michele Lizzit"
-print "Written by Michele Lizzit"
-print "Last update 25 Apr 2016"
+print "Written by Michele Lizzit - lizzit.it"
+print "Last update 24 Sept 2017"
 print ""
 
 if (suona_campanella_ora) :
@@ -208,14 +212,14 @@ if (suona_campanella_ora) :
 while (1) :
 	suonato = 0
 	prev_time = time.strftime("%H:%M:%S")
+
+	print orari;
 	
 	#controlla se è ora di suonare la campanella
-	tmp = 0
-	while tmp < len(orari) :
-		if (time.strftime("%u %H:%M:%S") in orari[tmp]) or (time.strftime("%H:%M:%S") in orari[tmp]) or (time.strftime("%F %T") in orari[tmp]) :
-			campanella_suona(1)
-			suonato = 1
-		tmp += 1
+	if (time.strftime("%u %H:%M:%S") in orari) or (time.strftime("%H:%M:%S") in orari) or (time.strftime("%F %T") in orari) :
+		campanella_suona(1)
+		suonato = 1
+
 	
 	#verifica se è ora di aggiornare l'orologio di sistema con il server NTP
 	if ((time.strftime("%u %H:%M:%S") == update_ntp) or (time.strftime("%H:%M:%S") == update_ntp) or (time.strftime("%F %T") == update_ntp) or (update_ntp_now == 1)) :
