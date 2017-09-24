@@ -42,8 +42,9 @@ while (($line = fgets($handle)) !== false) {
 }
 
 if (isset($_POST['enable']) && isset($_POST['orari']) && isset($_POST['ntp_update_time']) && isset($_POST['ntp_server']) && isset($_POST['volume'])) {
-
-	$lines = 8 + substr_count($_POST['orari'],"\n") + 2;
+	
+	$timetable = trim($_POST['orari']);
+	$lines = 8 + substr_count($timetable,"\n") + 2;
 
 	if (isset($_POST['squilla_ora'])) {
 		$squilla_ora = 1;
@@ -59,24 +60,24 @@ if (isset($_POST['enable']) && isset($_POST['orari']) && isset($_POST['ntp_updat
 	}
 
 	$options_string = "#le righe che iniziano con # vengono scartate\n"
-	. $lines . "
-	#enable\n"
+	. $lines .
+	"\n#enable\n"
 	. $_POST['enable'] .
-	"\n#track duratin in seconds
-	1
-	#volume
-	" . $_POST['volume'] . "
-	#ntp server
-	" . $_POST['ntp_server'] . "
-	#ntp update time
-	" . $_POST['ntp_update_time'] . "
-	#update ntp now\n"
+	"\n#track duratin in seconds\n" .
+	"1\n" . 
+	"#volume\n" . 
+	$_POST['volume'] .
+	"\n#ntp server\n"
+	. $_POST['ntp_server'] .
+	"\n#ntp update time\n"
+	. $_POST['ntp_update_time'] .
+	"\n#update ntp now\n"
 	. $update_ntp_now .
 	"\n#NON MODIFICARE QUESTO COMMENTO squilla ora\n"
 	. $squilla_ora .
-	"\n#num_options includendo questa
-	9
-	" . $_POST['orari'];
+	"\n#num_options includendo questa\n" .
+	"9\n"
+	. $timetable;
 
 	file_put_contents($OPTIONS_FILE_PATH, $options_string);
 
