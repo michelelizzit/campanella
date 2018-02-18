@@ -199,7 +199,7 @@ sudo pip install distribute
 sudo pip install RPi.GPIO
 sudo pip install RPLCD
 sudo pip install pyserial
-sudo apt-get -y install apache2 php5
+sudo apt-get -y install apache2 php
 green_color;
 echo "Enabling apache rewrite mod..."
 default_color;
