@@ -226,6 +226,7 @@ sleep 1;
 green_color;
 echo "Restarting apache server..."
 default_color;
+
 service apache2 restart
 green_color;
 echo "Installing..."
